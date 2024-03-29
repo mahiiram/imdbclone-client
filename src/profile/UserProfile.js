@@ -46,6 +46,7 @@ const UserProfile = () => {
           </Typography>
          </Box>)}
           <div>
+            <h1>Reviews</h1>
             {reviews && reviews.map((review,index)=>(
               <div style={{display:"flex",justifyContent:"space-between",border:"1px solid white",borderRadius:"5px"}}>
               <h5 style={{ margin: "10px" }} key={index}>{review.review}</h5>

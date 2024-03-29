@@ -1,9 +1,8 @@
 import React, {useEffect, useState } from 'react'
 import "./Review.css"
 import { useNavigate, useParams } from 'react-router-dom'
-import { getmoviedetail, newreview,deletebooking } from '../../api-helpers/api-helpers';
+import { getmoviedetail, newreview} from '../../api-helpers/api-helpers';
 import { Box, Button, Typography, Card, CardContent } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 const Review = () => {
     const navigate = useNavigate()
