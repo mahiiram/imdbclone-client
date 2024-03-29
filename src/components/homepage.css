@@ -3,3 +3,7 @@
     width: 100%;
     background-color: black;
 }
+
+.slick-slide > div{
+    margin: 0 100px;
+}

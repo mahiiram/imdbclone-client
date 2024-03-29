@@ -44,7 +44,7 @@ export const getmoviedetail = async (id)=>{
 }
 
 export const newreview = async (data)=>{
-    const res = await axios.post('http://localhost:5000/api/review/create',{
+    const res = await axios.post('https://imdbclone-server-production.up.railway.app/api/review/create',{
         movie:data.movie,
         review:data.review,
         user:localStorage.getItem('userid')
