@@ -7,9 +7,9 @@ const NewMovie = () => {
     const [movies,setMovies] = useState()
     const [form, setForm] = useState({
         title: "",
-        actors: [{ name: "", actorimage: "" }],
-        producers: [{ name: "", producerimage: "" }],
-        director: [{ name: "", directorimage: "" }],
+        actors: [{ name: "", image: "" }],
+        producers: [{ name: "", image: "" }],
+        director: [{ name: "", image: "" }],
         description: "",
         releasedate: "",
         posterurl: "",
@@ -81,10 +81,10 @@ const NewMovie = () => {
                             class="form-control"
                             name="actorimage"
                             placeholder='Actorimage'
-                            value={actor.actorimage}
+                            value={actor.image}
                             onChange={(event) => {
                                 const newActors = [...form.actors];
-                                newActors[index].actorimage = event.target.value;
+                                newActors[index].image = event.target.value;
                                 setForm({
                                     ...form,
                                     actors: newActors,
@@ -122,10 +122,10 @@ const NewMovie = () => {
                             name="producerimage"
                             class="form-control"
                             placeholder='Producer Image'
-                            value={producer.producerimage}
+                            value={producer.image}
                             onChange={(event) => {
                                 const newProducers = [...form.producers];
-                                newProducers[index].producerimage = event.target.value;
+                                newProducers[index].image = event.target.value;
                                 setForm({
                                     ...form,
                                     producers: newProducers,
@@ -147,7 +147,7 @@ const NewMovie = () => {
                             type="text"
                             class="form-control"
                             name="directorname"
-                            placeholder='director Name'
+                            placeholder='Director Name'
                             value={director.name}
                             onChange={(event) => {
                                 const newDirectors = [...form.director];
@@ -164,10 +164,10 @@ const NewMovie = () => {
                             name="directorimage"
                             class="form-control"
                             placeholder='Director Image'
-                            value={director.directorimage}
+                            value={director.image}
                             onChange={(event) => {
                                 const newDirectors= [...form.director];
-                                newDirectors[index].directorimage = event.target.value;
+                                newDirectors[index].image = event.target.value;
                                 setForm({
                                     ...form,
                                     director: newDirectors,
