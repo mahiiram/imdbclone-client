@@ -3,17 +3,30 @@ import "./Review.css"
 import { useNavigate, useParams } from 'react-router-dom'
 import { getmoviedetail, newreview} from '../../api-helpers/api-helpers';
 import { Box, Button, Typography, Card, CardContent } from '@mui/material';
+import Castings from './Catings.js';
 
 const Review = () => {
     const navigate = useNavigate()
     const [movies, setMovies] = useState();
+    const [actor,setActor] = useState([])
+    const [director,setDirector] = useState([]);
+    const [producer,setProducer]=useState([]);
     const [inputs, setInputs] = useState({ review: "" })
     const id = useParams().id;
+    
+    const CastArry = actor.concat(director,producer)
+    console.log(CastArry)
     useEffect(() => {
         getmoviedetail(id)
-            .then((res) => setMovies(res.movies))
+            .then((res) => {
+               setMovies(res.movies)
+               setActor(res.movies.actors)
+               setDirector(res.movies.director)
+               setProducer(res.movies.producers)
+            }
+            )
             .catch((err) => console.log(err))
-    }, [id,movies])
+    }, [id])
     const handleChange = (e) => {
         setInputs((prevState) => ({ ...prevState, [e.target.name]: e.target.value }))
     }
@@ -37,6 +50,7 @@ const Review = () => {
     return (
         <div className='maindiv'>
             <div className='firstdiv'>
+            <div className='movie-content'>
                 {movies && <div>
                     <Typography padding={2} variant="h5" textAlign={"start"}>
                         MOVIE:{movies.title}
@@ -69,7 +83,7 @@ const Review = () => {
                     </form>
                 </div>}
             </div>
-            <div className="secondiv">
+            <div className="review-content">
                 {movies && <div>
 
                     <Card
@@ -81,6 +95,7 @@ const Review = () => {
                             color: "white"
                         }}>
                         <CardContent>
+                            <h5>Movie Plot:</h5>
                             <Typography variant='h6'>{movies.description}</Typography>
                         </CardContent>
                     </Card>
@@ -95,18 +110,32 @@ const Review = () => {
                             }}>
                             <CardContent>
                                 <h2>Reviews</h2>
-                                <div>{movies && movies.reviews.map((review, index) => (
-                                    <div style={{display:"flex",justifyContent:"space-between",border:"1px solid white",borderRadius:"5px"}}>
-                                        <h5 style={{ margin: "10px" }} key={index}>{review.review}</h5>
-                    
+                                {movies.reviews.length===0?(
+                                    <div style={{display:"flex",justifyContent:"center",alignItems:"center"}}>
+                                        <p style={{textAlign:"center"}}>Be the first one to review</p>
                                     </div>
-
-
-                                ))}</div>
+                                ):(
+                                    <div>{movies && movies.reviews.map((review, index) => (
+                                        <div style={{display:"flex",justifyContent:"space-between",border:"1px solid white",borderRadius:"5px"}}>
+                                            <h5 style={{ margin: "10px" }} key={index}>{review.review}</h5>
+                        
+                                        </div>
+    
+    
+                                    ))}</div>
+                                )}
+                                
                             </CardContent>
                         </Card>
                     </div>
                 </div>}
+            </div>
+            </div>
+            <div className='cast'>
+                <div>
+                    <h3>Cast</h3>
+                </div>
+                <Castings id={id}/>
             </div>
         </div>
     )
