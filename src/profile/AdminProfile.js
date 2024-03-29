@@ -39,7 +39,7 @@ const AdminProfile = () => {
            <List>{movies && movies.map((movies)=>(
                     <ListItem sx={{bgcolor:"#00d386",marginBottom:'10px', color:"white" ,textAlign:'center' , margin:'1'}}>
                     <ListItemText sx={{margin:1 , width:"auto", textAlign:'center'}}>
-                      <img src={movies.posterurl} width={'30%'} height={'30%'}  />
+                  <img src={movies.posterurl} width={'30%'} height={'30%'}  alt={movies.title}/>
                     <Typography>Movie:{movies.title}</Typography>
                     </ListItemText>
                    </ListItem>

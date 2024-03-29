@@ -1,10 +1,9 @@
-import { Card, CardContent, Typography, CardActions, Button } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Card, CardContent, Typography, CardActions} from '@mui/material'
+import React from 'react'
+import { Link } from 'react-router-dom';
 
 
 const Movieitems = ({posterurl,title,releasedate,id}) => {
-  const navigate = useNavigate()
   return (
 
           <Card

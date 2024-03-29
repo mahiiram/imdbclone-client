@@ -20,7 +20,7 @@ function Castings({id}) {
         }
         )
         .catch((err) => console.log(err))
-}, [id])
+}, [id,movies])
     const responsive = {
         superLargeDesktop: {
           breakpoint: { max: 4000, min: 3000 },

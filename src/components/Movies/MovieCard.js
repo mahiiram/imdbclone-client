@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { getallmovies } from '../../api-helpers/api-helpers';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 
 const MovieCard = () => {
-  const navigate = useNavigate()
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     getallmovies().then((data) => setMovies(data.movies)).catch((err) => console.log(err))
